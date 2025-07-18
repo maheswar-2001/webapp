@@ -36,7 +36,7 @@ pipeline{
 sshagent(['tomcatserver']) {
     // some block
 sh """
-scp -o StrictHostKeyChecking=no target/myweb.war ec2-user@13.204.87.116:/home/ec2-user/tomcatserver/webapps/
+scp -o StrictHostKeyChecking=no target/myweb.war ec2-user@65.0.21.164:/home/ec2-user/tomcatserver/webapps/
 ssh ec2-user@13.204.87.116 /home/ec2-user/tomcatserver/bin/shutdown.sh
 ssh ec2-user@13.204.87.116 /home/ec2-user/tomcatserver/bin/startup.sh
           """
