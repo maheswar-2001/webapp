@@ -26,7 +26,7 @@ pipeline{
        stage("package"){
 	    steps{
 		 sh 'mvn clean package'
-                 sh "mv target/*.war target/myweb.war"
+                 sh "mv target/*.war target/mywebapp.war"
 
 		}
 		}
@@ -36,7 +36,7 @@ pipeline{
 sshagent(['tomcatserver']) {
     // some block
 sh """
-scp -o StrictHostKeyChecking=no target/myweb.war ec2-user@15.206.165.99:/home/ec2-user/tomcatserver/webapps/
+scp -o StrictHostKeyChecking=no target/mywebapp.war ec2-user@15.206.165.99:/home/ec2-user/tomcatserver/webapps/
 ssh ec2-user@15.206.165.99/home/ec2-user/tomcatserver/bin/shutdown.sh
 ssh ec2-user@15.206.165.99/home/ec2-user/tomcatserver/bin/startup.sh
           """
